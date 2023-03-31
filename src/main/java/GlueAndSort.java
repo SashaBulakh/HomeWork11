@@ -3,19 +3,15 @@ import java.util.stream.Collectors;
 
 public class GlueAndSort {
     public static void main(String[] args) {
-        String [] array = {"1, 2, 0", "4, 5"};
-        String str =  String.join(",", array);
-        String [] newArray = str.split("\\s+|,\\s*");
+        String[] array = {"1, 2, 0", "4, 5"};
+        String str = String.join(",", array);
 
-        System.out.println(Arrays.toString(newArray));
 
-       final List<String> list = Arrays.asList(newArray);
-       List<Integer> newList = list.stream()
-               .map(s -> Integer.parseInt((s)))
-               .collect(Collectors.toList());
+        List<String> list = Arrays.asList(str.split("\\s+|,\\s*")).stream()
+                .sorted()
+                .collect(Collectors.toList());
 
-       newList.sort(Comparator.naturalOrder());
 
-       System.out.println(newList);
-   }
+        System.out.println(list.toString().replaceAll("^\\[|]$", "\""));
+    }
 }
