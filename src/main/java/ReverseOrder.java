@@ -8,11 +8,11 @@ public class ReverseOrder {
     public static void main(String[] args) {
         final List<String> list = Arrays.asList("my", "name", "is", "sasha", "bulakh");
 
-        final List<String> result = list.stream()
+        String filter = list.stream()
                 .map(String::toUpperCase)
                 .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+                .collect(Collectors.joining(", "));
 
-        System.out.println(result.toString().replaceAll("^\\[|\\]$", ""));
+        System.out.println(filter);
     }
 }
